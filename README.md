@@ -59,10 +59,7 @@ def material_recommend_for_selection(input_values, tolerance=0.05):
         filtered_df = df[
             (df['Su'].between(input_values['Su'] * (1 - tolerance), input_values['Su'] * (1 + tolerance))) &
             (df['Sy'].between(input_values['Sy'] * (1 - tolerance), input_values['Sy'] * (1 + tolerance))) &
-            (df['E'].between(input_values['E'] * (1 - tolerance), input_values['E'] * (1 + tolerance))) &
-            (df['G'].between(input_values['G'] * (1 - tolerance), input_values['G'] * (1 + tolerance))) &
-            (df['mu'].between(input_values['mu'] * (1 - tolerance), input_values['mu'] * (1 + tolerance))) &
-            (df['Ro'].between(input_values['Ro'] * (1 - tolerance), input_values['Ro'] * (1 + tolerance)))
+            (df['E'].between(input_values['E'] * (1 - tolerance), input_values['E'] * (1 + tolerance))) 
         ]
         m = list(filtered_df[filtered_df['Use'] == True]['Material'].unique())
         return f"Materials suitable for selection: {m if m else 'None found'}"
@@ -73,10 +70,7 @@ def material_recommend_for_selection(input_values, tolerance=0.05):
 mech_prop = {
     'Su': 440,
     'Sy': 275,
-    'E': 206000,
-    'G': 80000,
-    'mu': 0.30,
-    'Ro': 7860
+    'E': 206000
 }
 
 material_recommend_for_selection(mech_prop)
